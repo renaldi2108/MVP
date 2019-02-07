@@ -5,6 +5,8 @@ Author: Renaldi | <a href='https://renaldirey.id/ahli-dan-pakar-seo-indonesia/' 
 
 Website: https://renaldirey.id || http://renseo.blogspot.com/
 
+Kontes SEO: <a href='https://renaldirey.id/stimuno-untuk-balita/'>Stimuno Untuk Balita</a>
+
 Facebook: fb.com/javier.renaldi.3
 
 Tweet: twitter.com/R21_Zoldyck
