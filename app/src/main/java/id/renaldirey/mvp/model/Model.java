@@ -1,4 +1,4 @@
-package id.renaldirey.mvp;
+package id.renaldirey.mvp.model;
 
 /**
  * Created by IT Cermat on 12/08/2017.

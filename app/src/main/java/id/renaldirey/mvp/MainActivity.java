@@ -1,15 +1,22 @@
 package id.renaldirey.mvp;
 
+import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Toast;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import id.renaldirey.mvp.model.Model;
+import id.renaldirey.mvp.presenter.MyPresenter;
+import id.renaldirey.mvp.view.DataView;
 
-public class MainActivity extends AppCompatActivity implements MainMVP.view {
+public class MainActivity extends AppCompatActivity implements DataView<Model> {
 
-    private Presenter presenter;
+    private static final String TAG = MainActivity.class.getSimpleName();
+
+    private MyPresenter presenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,16 +24,33 @@ public class MainActivity extends AppCompatActivity implements MainMVP.view {
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
-        presenter = new Presenter(this);
+        presenter = new MyPresenter();
     }
 
     @OnClick(R.id.btn)
     void clicked(){
-        presenter.clickedButton();
+        loadPresenter();
+    }
+
+    private void loadPresenter() {
+        presenter.attachView(this);
+
+        if(presenter.isViewAttached())
+            presenter.clickedButton();
     }
 
     @Override
-    public void displayToast(Model model){
-        Toast.makeText(this, "Hello "+model.getNama(), Toast.LENGTH_SHORT).show();
+    public void showData(Model data) {
+        Toast.makeText(this, "Hello "+data.getNama(), Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public Context getContext() {
+        return this;
+    }
+
+    @Override
+    public void isError(String message) {
+        Log.e(TAG+".error", message);
     }
 }
